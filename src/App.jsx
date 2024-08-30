@@ -8,17 +8,18 @@ function App() {
   const [searchMovie, setSetsearchMovie] = useState("don");
 
   useEffect(() => {
-    fetch(`http://www.omdbapi.com/?s=don&page=1&apikey=57ff83c2`)
+    fetch(`http://www.omdbapi.com/?s=jawan&page=1&apikey=57ff83c2`)
       .then((res) => res.json())
-      .then((data) => setDatas(data.Search));
+      .then((data) => setDatas(data.Search))
+      .catch((error) => console.error("Error:", error));
   }, []);
 
   const getMovie = () => {
     axios
       .get(`http://www.omdbapi.com/?s=${searchMovie}&page=1&apikey=57ff83c2`)
-      .then((res) => {
-        setDatas(res.data.Search);
-      });
+      .then((res) => res.json())
+      .then((data) => setDatas(data.Search))
+      .catch((error) => console.error("Error:", error));
   };
 
   const handleAscending = () => {
