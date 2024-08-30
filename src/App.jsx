@@ -47,27 +47,29 @@ function App() {
       <h1 className="text-blue-800 text-3xl font-bold mb-6 underline">
         Movie Database
       </h1>
-      <input
-        className="border-blue-800 border rounded-2xl px-2 py-2 mb-5 mr-3 w-2/4"
-        type="text"
-        placeholder="Filter"
-        value={searchMovie}
-        onChange={(e) => setSetsearchMovie(e.target.value)}
-      />
-      <button
-        onClick={() => getMovie()}
-        className="bg-blue-800 text-blue-200 px-4 py-2 rounded-3xl"
-      >
-        Search
-      </button>
+      <div className="flex flex-col sm:flex-row items-center justify-center mb-5">
+        <input
+          className="w-full mb-4 sm:mb-0 sm:w-2/4 lg:w-4/5 border-blue-800 border rounded-3xl px-2 py-2 sm:mr-3 "
+          type="text"
+          placeholder="Filter"
+          value={searchMovie}
+          onChange={(e) => setSetsearchMovie(e.target.value)}
+        />
+        <button
+          onClick={() => getMovie()}
+          className="w-full sm:w-1/3 mb-4 sm:mb-0  bg-blue-800 text-blue-200 px-4 py-2 rounded-3xl"
+        >
+          Search
+        </button>
 
-      <button
-        className="bg-blue-800 text-blue-200 py-2 px-4 rounded-3xl ml-2"
-        onClick={() => handleAscending()}
-      >
-        A-Z
-      </button>
-      <ul className="text-3xl font-bold grid grid-cols-4 gap-5	">
+        <button
+          className="w-full sm:w-1/3 mb-4 sm:mb-0 sm:ml-2 bg-blue-800 text-blue-200 py-2 px-4 rounded-3xl "
+          onClick={() => handleAscending()}
+        >
+          A-Z
+        </button>
+      </div>
+      <ul className="text-3xl font-bold grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-3  xl:grid-cols-4 xl:gap-4">
         {datas
           .filter((val) => {
             if (records === "") {
@@ -94,7 +96,7 @@ function App() {
                 <div>
                   <img
                     src={e.Poster}
-                    className="object-fill h-[50vh] w-full"
+                    className="object-fill h-[40vh] lg:h-[45vh] xl:h-[50vh] w-full"
                     alt={e.Title}
                   />
                   <h3
