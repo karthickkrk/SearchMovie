@@ -8,7 +8,7 @@ function App() {
   const [searchMovie, setSetsearchMovie] = useState("jawan");
 
   useEffect(() => {
-    fetch(`http://www.omdbapi.com/?s=jawan&page=1&apikey=57ff83c2`)
+    fetch(`https://www.omdbapi.com/?s=jawan&page=1&apikey=57ff83c2`)
       .then((res) => res.json())
       .then((data) => setDatas(data.Search))
       .catch((error) => console.error("Error:", error));
@@ -16,7 +16,7 @@ function App() {
 
   const getMovie = () => {
     axios
-      .get(`http://www.omdbapi.com/?s=${searchMovie}&page=1&apikey=57ff83c2`)
+      .get(`https://www.omdbapi.com/?s=${searchMovie}&page=1&apikey=57ff83c2`)
       .then((res) => res.json())
       .then((data) => setDatas(data.Search))
       .catch((error) => console.error("Error:", error));
