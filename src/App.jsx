@@ -5,7 +5,7 @@ import "./App.css";
 function App() {
   const [datas, setDatas] = useState([]);
   const [records, setRecords] = useState("");
-  const [searchMovie, setSetsearchMovie] = useState("don");
+  const [searchMovie, setSetsearchMovie] = useState("jawan");
 
   useEffect(() => {
     fetch(`http://www.omdbapi.com/?s=jawan&page=1&apikey=57ff83c2`)
