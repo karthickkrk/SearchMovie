@@ -5,7 +5,7 @@ import "./App.css";
 function App() {
   const [datas, setDatas] = useState([]);
   const [records, setRecords] = useState("");
-  const [searchMovie, setSetsearchMovie] = useState("jawan");
+  const [searchMovie, setSetsearchMovie] = useState("Robot");
 
   useEffect(() => {
     const fetchData = async () => {
