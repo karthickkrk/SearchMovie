@@ -8,18 +8,30 @@ function App() {
   const [searchMovie, setSetsearchMovie] = useState("jawan");
 
   useEffect(() => {
-    fetch(`https://www.omdbapi.com/?s=jawan&page=1&apikey=57ff83c2`)
-      .then((res) => res.json())
-      .then((data) => setDatas(data.Search))
-      .catch((error) => console.error("Error:", error));
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `https://www.omdbapi.com/?s=${searchMovie}&page=1&apikey=57ff83c2`
+        );
+        const data = await response.json();
+        setDatas(data.Search);
+      } catch (err) {
+        console.error("Error fetching data:", err);
+      }
+    };
+    fetchData();
   }, []);
 
-  const getMovie = () => {
-    axios
-      .get(`https://www.omdbapi.com/?s=${searchMovie}&page=1&apikey=57ff83c2`)
-      .then((res) => res.json())
-      .then((data) => setDatas(data.Search))
-      .catch((error) => console.error("Error:", error));
+  const getMovie = async () => {
+    try {
+      const response = await fetch(
+        `https://www.omdbapi.com/?s=${searchMovie}&page=1&apikey=57ff83c2`
+      );
+      const data = await response.json();
+      setDatas(data.Search);
+    } catch (err) {
+      console.error("Error fetching data:", err);
+    }
   };
 
   const handleAscending = () => {
@@ -43,7 +55,7 @@ function App() {
         onChange={(e) => setSetsearchMovie(e.target.value)}
       />
       <button
-        onClick={() => getMovie}
+        onClick={() => getMovie()}
         className="bg-blue-800 text-blue-200 px-4 py-2 rounded-3xl"
       >
         Search
