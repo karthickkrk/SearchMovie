@@ -5,7 +5,7 @@ import "./App.css";
 function App() {
   const [datas, setDatas] = useState([]);
   const [records, setRecords] = useState("");
-  const [searchMovie, setSetsearchMovie] = useState("Robot");
+  const [searchMovie, setSearchMovie] = useState("Robot");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -53,7 +53,7 @@ function App() {
           type="text"
           placeholder="Filter"
           value={searchMovie}
-          onChange={(e) => setSetsearchMovie(e.target.value)}
+          onChange={(e) => setSearchMovie(e.target.value)}
         />
         <button
           onClick={() => getMovie()}
@@ -72,14 +72,6 @@ function App() {
       <ul className="text-3xl font-bold grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-3  xl:grid-cols-4 xl:gap-4">
         {datas
           .filter((val) => {
-            if (records === "") {
-              return val;
-            } else if (
-              val.Title.toLowerCase().includes(records.toLocaleLowerCase()) ||
-              val.Year.toLowerCase().includes(records.toLocaleLowerCase())
-            ) {
-              return val;
-            }
             if (val.Title.toLowerCase().includes(records.toLocaleLowerCase())) {
               return val;
             }
