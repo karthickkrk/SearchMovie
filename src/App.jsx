@@ -1,24 +1,16 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
-let API_key = "&apikey=57ff83c2";
-let base_url = "http://www.omdbapi.com";
-let url = base_url + `/?s=batman&page=1` + API_key;
 
 function App() {
   const [datas, setDatas] = useState([]);
   const [records, setRecords] = useState("");
-  const [url_set, setUrl_set] = useState(url);
   const [searchMovie, setSetsearchMovie] = useState("don");
 
   useEffect(() => {
-    axios
-      .get(`http://www.omdbapi.com/?s=don&page=1&apikey=57ff83c2`)
-      .then((res) => {
-        console.log(res);
-
-        setDatas(res.data.Search);
-      });
+    fetch(`http://www.omdbapi.com/?s=don&page=1&apikey=57ff83c2`)
+      .then((res) => res.json())
+      .then((data) => setDatas(data.Search));
   }, []);
 
   const getMovie = () => {
